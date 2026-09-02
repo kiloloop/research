@@ -8,10 +8,7 @@ Research published from our internal pipeline. Each piece is reviewed and saniti
 
 | Directory | Contents |
 |-----------|----------|
-| `practical-guides/` | How-to guides for agent coordination workflows |
-| `ops-reviews/` | Operational reviews and post-mortems |
 | `runtime-comparison/` | Runtime capability comparisons and benchmarks |
-| `protocol-patterns/` | Protocol design patterns and reference architectures |
 
 ## License
 
