@@ -1,6 +1,6 @@
 # Kiloloop Research
 
-Curated research from Kiloloop — practical guides, runtime comparisons, and protocol patterns for multi-agent coordination.
+Curated research from Kiloloop — runtime comparisons, operational reviews, practical guides, and protocol patterns for multi-agent coordination.
 
 ## What's here
 
@@ -9,6 +9,15 @@ Research published from our internal pipeline. Each piece is reviewed and saniti
 | Directory | Contents |
 |-----------|----------|
 | `runtime-comparison/` | Runtime capability comparisons and benchmarks |
+| `ops-reviews/` | Operational reviews of our own agent fleet, with the scripts behind the numbers |
+
+## Pieces
+
+| Date | Piece | Where |
+|------|-------|-------|
+| 2026-09-05 | [Human in the loop, measured: four months of autonomy-gate records](ops-reviews/2026-09-05-human-in-the-loop-measured.md) — pause rates, human outcomes and latency, checkpoint breaches and declared-vs-actual fidelity from 602 audit records; reproducible with [`hil_stats.py`](ops-reviews/hil_stats.py) | `ops-reviews/` |
+| refreshed 2026-09 | [Runtime capability matrix](runtime-comparison/runtime_capability_matrix.md) — what each coding-agent runtime can and cannot do, self-reported and cross-verified by the agents | `runtime-comparison/` |
+| 2026-03 | [Prompt caching patterns](runtime-comparison/prompt-caching-patterns.md) — maximizing prompt-cache hits across runtimes | `runtime-comparison/` |
 
 ## License
 
