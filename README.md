@@ -18,7 +18,7 @@ Research published from our internal pipeline. Each piece is reviewed and saniti
 | 2026-09-07 | [Estimate accuracy, measured: seven months of dispatch estimates against their actuals](ops-reviews/2026-09-07-estimate-accuracy-measured.md) — actual-to-estimate ratios from 606 dispatch rows by period, month, estimate size and task class, the declared-envelope headroom on review-loop legs, verdicts and review status; the computation behind the numbers is [`estimate_stats.py`](ops-reviews/estimate_stats.py) | `ops-reviews/` |
 | 2026-09-05 | [Human in the loop, measured: four months of autonomy-gate records](ops-reviews/2026-09-05-human-in-the-loop-measured.md) — pause rates, human outcomes and latency, checkpoint breaches and declared-vs-actual fidelity from 602 audit records; reproducible with [`hil_stats.py`](ops-reviews/hil_stats.py) | `ops-reviews/` |
 | refreshed 2026-09 | [Runtime capability matrix](runtime-comparison/runtime_capability_matrix.md) — what each coding-agent runtime can and cannot do, self-reported and cross-verified by the agents | `runtime-comparison/` |
-| 2026-03 | [Prompt caching patterns](runtime-comparison/prompt-caching-patterns.md) — maximizing prompt-cache hits across runtimes | `runtime-comparison/` |
+| refreshed 2026-09 | [Prompt caching patterns](runtime-comparison/prompt-caching-patterns.md) — Claude and Codex caching defaults, billing mechanics, and measurement | `runtime-comparison/` |
 
 ## License
 
