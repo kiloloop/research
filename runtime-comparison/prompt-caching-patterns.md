@@ -1,149 +1,148 @@
 # Prompt Caching Patterns
 
-How to maximize prompt cache hits across Claude, Codex, and Gemini to reduce cost and latency.
+How to reuse prompt context with Claude and Codex to reduce input cost and latency.
+
+**Fact-checked 2026-09-12 UTC. All linked sources were retrieved on that date.**
+API capabilities and product defaults are distinguished below; documentation does
+not establish a workload's realized savings.
 
 ## Why It Matters
 
-Prompt caching avoids reprocessing static context (system prompts, CLAUDE.md, project facts) on every turn. In practice:
-- **Cache read**: 10x cheaper than uncached input ($0.50/MTok vs $5.00/MTok for Opus 4.8)
-- **Cache write**: 1.25x input price for the default 5-minute TTL, 2x for the 1-hour TTL (one-time cost, amortized over subsequent reads)
-- **Observed savings**: 83-95% cost reduction on cached input in multi-turn agent sessions
+A cached prefix can reduce the work repeated requests spend processing context.
+Savings depend on how much input is actually reused, cache writes and expiry,
+plus output and tool costs. A discounted cache read is not the same as an equal
+percentage reduction in the whole session's bill. See the provider mechanics
+under [Cost Comparison](#cost-comparison).
 
 ## Claude
 
-### Automatic — No Setup Required
+### Automatic Caching — API Opt-In, Claude Code Default
 
-Prompt caching is **enabled by default** for all Claude API usage. Every Claude Code session, headless run, and agent team benefits automatically — there is nothing to opt in to or configure.
+Automatic caching in the Claude Messages API requires request configuration.
+Anthropic's instruction is to “add a single `cache_control` field at the top
+level.” Use `{"type": "ephemeral"}` as its value; the API moves the cache
+breakpoint as the conversation grows. This is distinct from Claude Code, which
+handles caching automatically unless disabled.
+([API caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching),
+[Claude Code caching](https://code.claude.com/docs/en/prompt-caching))
 
-How it works:
-- The API caches the longest common prefix of your prompt across requests
-- In a Claude Code session, the system prompt + CLAUDE.md + tool definitions form a stable prefix
-- After turn 1, all subsequent turns read this prefix from cache instead of reprocessing it
-- Cache TTL is ~5 minutes of inactivity, auto-extended on every hit
-- A typical multi-turn session sees **90%+ cache hit rate** out of the box
+The API caches an exact prefix in tools → system → messages order. The usual TTL
+is five minutes; one hour is also available. Reuse refreshes expiry. Eligibility
+and minimum prefix length depend on the model and platform: below-minimum Claude
+API requests run uncached. Legacy Bedrock integrations for Opus 4.6 and earlier
+require explicit block controls instead of top-level automatic caching.
+([API caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching))
 
 ### Maximizing Cache Hits
 
-The default behavior already handles the common case. These tips help squeeze out the remaining savings:
+1. Put stable instructions and reference material before changing requests.
+2. Keep reusable content consistent; compare actual cost and quality before
+   adding context merely to reach a caching threshold.
+3. Measure the workload rather than assuming a particular hit rate.
 
-1. **Keep static context at the top of the prompt**
-   - System prompt, CLAUDE.md, project_facts.md, and tool definitions are loaded first
-   - These rarely change within a session → high cache hit rate
+These are optimization practices, not a savings guarantee.
+([Cost optimization](https://platform.claude.com/docs/en/about-claude/models/optimizing-for-cost-and-intelligence))
 
-2. **Front-load stable context in CLAUDE.md**
-   - Put repo structure, conventions, and protocol rules early
-   - Put volatile content (open threads, recent decisions) in separate files loaded later
+### Explicit Cache Control (Custom API Integrations)
 
-3. **Batch agent work into focused sessions**
-   - A 20-turn session on one task reuses cache across all turns
-   - Switching tasks mid-session may invalidate cache if the prefix changes
-
-### Explicit Cache Control (Custom API Integrations Only)
-
-When building custom integrations with the Messages API (not Claude Code CLI), you can explicitly mark content blocks for caching. This is **not needed** for Claude Code — it handles caching automatically.
-
-```json
-{
-  "role": "user",
-  "content": [
-    {
-      "type": "text",
-      "text": "<large stable context>",
-      "cache_control": {"type": "ephemeral"}
-    }
-  ]
-}
-```
-
-Use this when you have a large reference document mid-conversation that isn't part of the natural prefix (e.g., a full API spec injected as a user message).
+Place `cache_control` on supported blocks for explicit boundaries. Caching includes
+the prefix through the marked block, subject to model and platform eligibility.
+([API caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching))
 
 ### Headless Claude automation
 
-When running headless Claude sessions (for example, via a polling daemon or CI-triggered agent invocations), maximize caching by:
-- Loading skill files and project context as system prompt (cached after first call)
-- Processing multiple PRs in sequence within one invocation to share the same cache
-- Keeping poll intervals short enough to stay within cache TTL (~5 min)
+Claude Code's defaults depend on how usage is paid: the main conversation uses
+one hour for included subscription usage, but five minutes with API keys, cloud
+providers, or usage credits. Other requests generally use five minutes. Inspect
+the current TTL settings before planning reuse across separate jobs.
+([Claude Code caching](https://code.claude.com/docs/en/prompt-caching))
+
+Avoid changing the system prefix between related jobs. For print-mode automation,
+`--exclude-dynamic-system-prompt-sections` can move machine-specific context into
+the first user message; it is ignored with a replacement system prompt. This is
+an option for sharing stable prefixes across machines.
+([CLI reference](https://code.claude.com/docs/en/cli-reference))
 
 ### Multi-Agent Teams
 
-When spawning parallel agents via Claude Code teams:
-- Each agent gets its own session → **separate cache** per agent
-- Shared CLAUDE.md and tool definitions still cache within each agent's session
-- Observed: 94% cache hit rate across 3 parallel agents (workflow-templates run)
+Teammates have independent context windows, but that does not imply separate
+server caches. Claude Code documents reuse between same-directory sessions with
+matching prefixes; ordinary subagents and forks have different reuse behavior.
+Measure reuse instead of inferring a hit rate from the number of agents.
+([Agent teams](https://code.claude.com/docs/en/agent-teams),
+[Claude Code caching](https://code.claude.com/docs/en/prompt-caching))
 
 ## Codex
 
 ### How It Works
 
-Codex CLI sends the full prompt to the Codex API on each invocation. There is no built-in cross-turn prompt cache like Claude's.
+OpenAI supports prompt caching, including cached-input pricing for Codex models.
+Codex with an API key follows API pricing; ChatGPT plan allowances and credits
+have their own accounting, which also reflects caching. Do not apply API dollar
+rates directly to a subscription session.
+([API prices](https://developers.openai.com/api/docs/pricing),
+[Codex pricing](https://learn.chatgpt.com/docs/pricing))
+
+For GPT-5.6 and later, the API offers implicit and explicit breakpoints, a
+1,024-visible-token minimum, and `prompt_cache_options.ttl: "30m"` as the minimum
+cache lifetime. Earlier models have different boundaries, minimums and retention
+settings. A shared prefix needs an eligible matching cache boundary; reuse is
+not guaranteed merely because two requests begin alike.
+([Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching))
+
+Cache lifetime and data retention are different controls. Check the selected
+model, endpoint, region and organization policy; cached state may outlive the
+minimum reuse window, and `store: false` is not a general cache-off switch.
+([Data controls](https://developers.openai.com/api/docs/guides/your-data))
 
 ### Context Reuse Strategies
 
-1. **Keep prompts short and focused**
-   - Codex charges per input token with no cache discount
-   - Include only the files and context directly relevant to the task
-
-2. **Use `--file` flags to scope context**
-   ```bash
-   codex --file src/auth.py --file tests/test_auth.py "Fix the token expiration bug"
-   ```
-
-3. **Batch related fixes in one invocation**
-   - `codex exec` processes all instructions in a single session
-   - Avoids re-sending the same context for each fix
-
-4. **Lean on diff-only context**
-   - For PR fix loops, pass the diff + findings rather than full file contents
-
-## Gemini
-
-### How It Works
-
-Gemini supports implicit context caching for large prompts. The API automatically caches prompts above a size threshold.
-
-### Context Reuse Strategies
-
-1. **Use cached content API for large stable context**
-   ```
-   POST /cachedContents
-   {
-     "model": "models/gemini-2.5-pro",
-     "contents": [{"role": "user", "parts": [{"text": "<stable context>"}]}],
-     "ttl": "600s"
-   }
-   ```
-
-2. **Reference cached content in subsequent requests**
-   ```
-   POST /generateContent
-   {
-     "cachedContent": "cachedContents/abc123",
-     "contents": [{"role": "user", "parts": [{"text": "New instruction"}]}]
-   }
-   ```
-
-3. **Gemini CLI sessions** — context is maintained within a session automatically; no explicit caching needed for interactive use.
+1. Keep stable instructions and tools first; append new messages and tool results.
+   Rewriting history or compacting it can change the cached prefix.
+2. For custom GPT-5.6+ API integrations, consider an explicit boundary after
+   reusable content when later content changes. Use model-supported controls.
+   ([Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching))
+3. Treat conversation continuity separately from billing: `previous_response_id`
+   carries state, but previous input in the chain remains billable.
+   ([Conversation state](https://developers.openai.com/api/docs/guides/conversation-state))
+4. In Codex tasks, name the relevant files and desired outcome in the prompt.
+   Keep context useful and task-specific; shorter input is not itself proof of
+   a cheaper completed task.
 
 ## Cost Comparison
 
-Approximate pricing as of June 2026 (per million tokens). Cache read is 0.1x input; cache write is shown at the default 5-minute TTL (1.25x input) — the 1-hour TTL costs 2x input. Check each provider's current pricing page for up-to-date rates:
+These are billing mechanics, not a frozen dollar-price table. Multipliers apply
+to the corresponding uncached input rate; output and tool charges are separate.
 
-| Runtime | Input | Cached Read | Cache Write | Output |
-|---------|------:|------------:|------------:|-------:|
-| Claude Fable 5 | $10.00 | $1.00 | $12.50 | $50.00 |
-| Claude Opus (4.6/4.7/4.8) | $5.00 | $0.50 | $6.25 | $25.00 |
-| Claude Sonnet 4.6 | $3.00 | $0.30 | $3.75 | $15.00 |
-| Claude Haiku 4.5 | $1.00 | $0.10 | $1.25 | $5.00 |
-| Codex | varies | N/A | N/A | varies |
-| Gemini Pro | $1.25 | $0.31 | — | $10.00 |
+| Surface | Cache reads | Writes and retention |
+|---|---|---|
+| Claude API | Model-dependent: commonly 0.1×; Fable 5.1/Mythos 5.1 list 0.025×. | Five-minute writes: 1.25×; one-hour writes: 2×. [Pricing](https://platform.claude.com/docs/en/about-claude/pricing) |
+| OpenAI API, GPT-5.6+ | 0.1×. | Writes: 1.25×; minimum lifetime: 30 minutes. [Pricing](https://developers.openai.com/api/docs/pricing), [caching](https://developers.openai.com/api/docs/guides/prompt-caching) |
+| Earlier OpenAI API models | Use the model's cached-input rate. | No additional cache-write charge; model-specific retention. [Caching](https://developers.openai.com/api/docs/guides/prompt-caching) |
+
+Compare the same model, API platform, context-length band and service tier.
+Standard, Batch and faster processing can have different prices or availability;
+use the current [Claude](https://platform.claude.com/docs/en/about-claude/pricing)
+and [OpenAI](https://developers.openai.com/api/docs/pricing) schedules.
 
 ## Practical Guidelines
 
-1. **Measure your cache hit rate** — check `cache_read_input_tokens` vs `input_tokens` in API responses or team stats output
-2. **Target >80% cache hit rate** for multi-turn sessions — if lower, your prefix is changing too often
-3. **Don't over-optimize** — the biggest savings come from the default behavior (CLAUDE.md + tools cached automatically)
-4. **Watch for cache-busting patterns**:
-   - Injecting timestamps or random IDs into system prompts
-   - Reordering tool definitions between turns
-   - Changing the user message prefix frequently
-5. **Mind the minimum cacheable prefix** — prefixes below the model minimum silently don't cache (no error; `cache_creation_input_tokens` stays 0). The minimum is 2,048 tokens on Fable 5 and Sonnet 4.6, and 4,096 tokens on Opus 4.8/4.7/4.6 and Haiku 4.5.
+1. **Measure reads, writes and total cost.** Claude exposes
+   `cache_read_input_tokens` and `cache_creation_input_tokens` separately from
+   uncached `input_tokens`. Token hit share is reads / (reads + writes + uncached).
+   ([API caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching))
+   OpenAI Responses exposes `usage.input_tokens_details.cached_tokens` and, on
+   GPT-5.6+, `cache_write_tokens`. Here, token hit share is `cached_tokens` /
+   `input_tokens`. Aggregate counts across requests before dividing.
+   ([Prompt caching](https://developers.openai.com/api/docs/guides/prompt-caching))
+2. **Use a representative workload.** Compare repeated runs with the same model,
+   task and service tier, including the first write and later misses.
+3. **Investigate misses before redesigning prompts.** Check changing context,
+   minimum length, cache boundaries and expiry. For custom integrations,
+   [Claude diagnostics](https://platform.claude.com/docs/en/build-with-claude/cache-diagnostics)
+   (Claude API only, beta) and
+   [OpenAI diagnostics](https://developers.openai.com/api/docs/guides/prompt-caching/diagnostics)
+   (Responses API, supported GPT-5.6+ models) compare request structure. Their
+   results can be inconclusive; usage counters establish actual reuse.
+4. **Optimize for task quality and total cost.** A cache-hit target alone does
+   not measure whether the agent completed useful work efficiently.
