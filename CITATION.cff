@@ -1,6 +1,7 @@
 cff-version: 1.2.0
 message: "If you use the research, data or scripts in this repository, please cite it as below."
 title: "Kiloloop Research"
+type: dataset
 authors:
   - name: "Kiloloop"
     website: "https://kiloloop.com"
@@ -16,3 +17,9 @@ keywords:
   - human in the loop
   - OACP
 abstract: "Research from Kiloloop's multi-agent fleet: runtime capability comparisons and operational reviews of the fleet's own dispatch and autonomy-gate records, published with the scripts and aggregates behind the numbers."
+preferred-citation:
+  type: website
+  title: "Kiloloop Research"
+  authors:
+    - name: "Kiloloop"
+  url: "https://kiloloop.com/research/"
