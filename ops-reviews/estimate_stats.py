@@ -10,7 +10,7 @@ disclosure. It reads the coordinator's own file layouts (paths below), so it is 
 rather than a portable tool. Reproducible: run it, paste the block.
 
 Usage:
-  python3 estimate_stats.py [--iris <coordinator repo root>] [--vault <vault_dir>] [--json out.json] [--rows out.tsv]
+  python3 estimate_stats.py [--coordinator <coordinator repo root>] [--vault <vault_dir>] [--json out.json] [--rows out.tsv]
 """
 from __future__ import annotations
 
@@ -23,9 +23,10 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 RATIO_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[x×]?")
-MIN_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(h|m|s)\b")
+MIN_RE = re.compile(r"(\d+(?:\.\d+)?)\s*(h|m|s)(?![a-z])")   # (?![a-z]), not \b: the "m" of a compound "2m47s" is followed by a digit
 RANGE_RE = re.compile(r"(\d+(?:\.\d+)?)\s*[–-]\s*(\d+(?:\.\d+)?)\s*(h|m)\b")
 TIER_RE = re.compile(r"^\**\s*(XS|XL|S|M|L)\b")
+UNIT_ORDER = {"h": 0, "m": 1, "s": 2}
 DATE_RE = re.compile(r"^(\d{4}-\d{2}-\d{2})")
 MD_RE = re.compile(r"^(\d{2})-(\d{2})$")
 EXCLUDE_RE = re.compile(r"carv|exclud|skip|not valid|duplicate|pooled|unmeasured|withdrawn|cancel", re.I)
@@ -57,12 +58,13 @@ def parse_minutes(cell: str):
         a, b, unit = float(m.group(1)), float(m.group(2)), m.group(3)
         v = (a + b) / 2
         return v * 60 if unit == "h" else v
-    total, found = 0.0, False
-    for v, unit in MIN_RE.findall(c):
-        found = True
-        total += float(v) * (60 if unit == "h" else 1 if unit == "m" else 1 / 60)
-        if unit in ("h", "m") and "s" not in c: break
-    return total if found else None
+    total, last = 0.0, None
+    for m in MIN_RE.finditer(c):       # the FIRST figure; a second one is added only as the adjacent smaller unit of a compound ("1h 20m", "35m33s")
+        v, unit = float(m.group(1)), m.group(2)
+        if last and not (UNIT_ORDER[unit] == UNIT_ORDER[last[0]] + 1 and not c[last[1]:m.start()].strip()): break
+        total += v * (60 if unit == "h" else 1 if unit == "m" else 1 / 60)
+        last = (unit, m.end())
+    return total if last else None
 
 def parse_ratio(cell: str):
     if not cell: return None
@@ -70,6 +72,12 @@ def parse_ratio(cell: str):
     if c in ("—", "-", "n/a", "N/A", "") or EXCLUDE_RE.search(c): return None
     m = RATIO_RE.search(c)
     return float(m.group(1)) if m else None
+
+def ledger_actual(cell: str):
+    """A ledger actual cell, work-first: an explicit work/exec figure wins over a wall figure in the same cell ("15m work / 21m send→done",
+    "~44m (19m work)"); a cell with no such figure parses as its first minutes figure. Same rule as the board reader's parse_actual."""
+    v, _ = parse_actual(cell or "")
+    return v if v is not None else parse_minutes(cell)
 
 def parse_tier(cell: str):
     m = TIER_RE.match((cell or "").strip())
@@ -108,7 +116,7 @@ def read_vault(path: Path):
         c = split_row(line)
         if len(c) < 9: continue
         yield dict(date=c[0], task=c[1], agent=norm_agent(c[2]), tier=parse_tier(c[3]), est=parse_minutes(c[3]),
-                   actual=parse_minutes(c[4]), ratio=parse_ratio(c[5]), review=None, verdict=c[8], source="vault summary")
+                   actual=ledger_actual(c[4]), ratio=parse_ratio(c[5]), review=None, verdict=c[8], source="vault summary")
 
 def read_calibration(path: Path):
     for line in path.read_text().splitlines():
@@ -118,7 +126,7 @@ def read_calibration(path: Path):
         if len(c) < 10: continue
         agent = norm_agent(c[7]) if norm_agent(c[7]) != "unknown" else norm_agent(c[9])
         yield dict(date=c[0], task=c[1], agent=agent, tier=parse_tier(c[2]), est=parse_minutes(c[3]),
-                   actual=parse_minutes(c[4]), ratio=parse_ratio(c[6]), review=c[5] if c[5] not in ("—", "") else None,
+                   actual=ledger_actual(c[4]), ratio=parse_ratio(c[6]), review=c[5] if c[5] not in ("—", "") else None,
                    verdict=c[9], source="calibration log")
 
 def read_detailed(path: Path):
@@ -141,7 +149,7 @@ def read_detailed(path: Path):
             agent = norm_agent(g.get("agent", "")) if "agent" in g else norm_agent(g.get("class", "") + " " + g.get("notes", ""))
             est_cell = g.get("est", "")
             yield dict(date=date, task=task, agent=agent, tier=parse_tier(est_cell) or parse_tier(g.get("class", "")), est=parse_minutes(est_cell),
-                       actual=parse_minutes(g.get("actual", "")), ratio=parse_ratio(g.get("ratio", "")), review=g.get("review"),
+                       actual=ledger_actual(g.get("actual", "")), ratio=parse_ratio(g.get("ratio", "")), review=g.get("review"),
                        verdict=g.get("verdict") or g.get("notes"), source="detailed log")
 
 DAY_START = "2026-08-03"   # the two-level board convention: day files keep est/actual pairs verbatim from this date
@@ -246,12 +254,13 @@ HEAD = "| Slice | n | mean | median | p20 | p80 | <0.5× (over-estimated) | 0.5�
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--iris", default=str(Path.home() / "iris"))
-    ap.add_argument("--vault", default=None, help="vault dir (default: vault_dir from ~/iris/config.yaml)")
+    ap.add_argument("--coordinator", dest="coordinator", default=str(Path.home() / "iris"), help="coordinator repo root: the ledgers, the calibration log and the board day files live under it")
+    ap.add_argument("--iris", dest="coordinator", help=argparse.SUPPRESS)   # the flag's earlier spelling; still accepted
+    ap.add_argument("--vault", default=None, help="vault dir (default: vault_dir from <coordinator>/config.yaml)")
     ap.add_argument("--json"); ap.add_argument("--rows", help="write the de-duplicated rows as TSV (private — do not publish)")
     ap.add_argument("--private", action="store_true", help="also print the per-agent-label view (coordinator's own use)")
     a = ap.parse_args()
-    iris = Path(a.iris).expanduser()
+    iris = Path(a.coordinator).expanduser()
     vault = a.vault
     if not vault:
         for line in (iris / "config.yaml").read_text().splitlines():

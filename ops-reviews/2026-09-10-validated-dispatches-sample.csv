@@ -1,0 +1,13 @@
+date,runtime,task_class,source,estimate_min,actual_min,ratio,verdict,review_status
+2026-02-18,agent-2,review / audit / verification,vault summary,22,15,0.68,ACCURATE,unrecorded
+2026-03-08,agent-1,docs / site content,vault summary,50,14,0.28,MISCALIBRATED,unrecorded
+2026-03-11,agent-1,docs / site content,vault summary,45,15.5,0.34,MISCALIBRATED,unrecorded
+2026-03-14,agent-1,implementation,vault summary,30,51,1.70,ACCURATE,unrecorded
+2026-03-18,no label,implementation,calibration log,45,6,0.13,,unrecorded
+2026-03-19,agent-3,brainstorm / research / design,vault summary,10,18,1.80,ACCURATE,unrecorded
+2026-03-20,agent-1,brainstorm / research / design,vault summary,15,17,1.13,ACCURATE,unrecorded
+2026-05-12,agent-2,review / audit / verification,detailed log,12,5,0.42,ACCURATE,n/a (no PR)
+2026-05-12,agent-1,other,detailed log,5,1.5,0.30,ACCURATE,n/a (no PR)
+2026-07-10,coordinator,coordinator self-block,detailed log,10,8,0.80,ACCURATE,unrecorded
+2026-07-13,more than one agent,docs / site content,detailed log,35,15,0.43,ACCURATE,unrecorded
+2026-09-04,agent-2,release / promote,board day files,55,34.8,0.63,,cross-reviewed
