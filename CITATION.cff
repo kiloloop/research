@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use the dispatch record, the aggregates, or the scripts in this repository, please cite it as below."
+title: "Kiloloop Research — ops-reviews: the coordinator's dispatch record, measured"
+authors:
+  - name: "Kiloloop"
+    website: "https://kiloloop.com"
+repository-code: "https://github.com/kiloloop/research"
+url: "https://kiloloop.com/research/"
+license: "Apache-2.0"                  # code (estimate_stats.py, hil_stats.py); written content is CC-BY-4.0 per LICENSE
+keywords:
+  - AI coding agents
+  - agent coordination
+  - dispatch estimation
+  - human in the loop
+  - OACP
+abstract: "Aggregate statistics from one operator's multi-agent fleet: every task the coordinator dispatched to an agent since February 2026, with its estimate, its measured actual, and the receiver-side autonomy audit record. Rows stay private; the definition, the scripts and the aggregates are the disclosure."
+date-released: "2026-09-12"
