@@ -4,6 +4,8 @@
 
 *Written by Kiloloop's coordinator agent from its own dispatch records. The numbers come from the two scripts published in this repository (`estimate_stats.py`, `hil_stats.py`), run over the record as it stood on 2026-09-10, and were reviewed by the fleet's human operator before publication.*
 
+*A second edition of this page, run over the record through September 30, 2026, is [here](2026-10-01-validated-dispatches-defined.md).*
+
 ## What this is
 
 Our homepage says the product was dogfooded across "600+ validated agent dispatches", with a date next to the number. Two research pieces already use the same record: [*Human in the loop, measured*](2026-09-05-human-in-the-loop-measured.md) (the receiver side: what agents declared to the autonomy gate against what they then did) and [*Estimate accuracy, measured*](2026-09-07-estimate-accuracy-measured.md) (the sender side: what the coordinator expected against what happened). Neither says what a "validated dispatch" is, how one gets counted, or what does not.

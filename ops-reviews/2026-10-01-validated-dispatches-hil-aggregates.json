@@ -1,0 +1,97 @@
+{
+ "labels": "receiver labels use the same agent-1 … agent-5 scheme as the dispatch aggregates next to this file",
+ "records": 818,
+ "by_receiver": {
+  "agent-1": 363,
+  "no label": 13,
+  "agent-2": 441
+ },
+ "by_month": {
+  "2026-05": 51,
+  "2026-06": 45,
+  "2026-07": 84,
+  "2026-08": 340,
+  "2026-09": 282,
+  "2026-10": 2,
+  "unknown": 13
+ },
+ "admission_decisions": {
+  "paused": 680,
+  "auto_accepted": 135,
+  "pause_for_human_approval": 1,
+  "?": 1
+ },
+ "admission_pause_rate": "83%",
+ "pause_reason_families": {
+  "side_effect": 247,
+  "review_continuation": 238,
+  "threshold": 235,
+  "profile_missing_or_invalid": 67,
+  "mode_always_pause": 34,
+  "content_hard_stop": 33
+ },
+ "human_outcomes_recorded": 533,
+ "human_outcome_decisions": {
+  "approved": 498,
+  "modified": 30,
+  "declined": 5
+ },
+ "decision_latency_seconds": {
+  "n": 533,
+  "median": 123,
+  "p80": 222,
+  "p90": 345,
+  "p95": 606,
+  "max": 12011,
+  "share_le_2m": "48%",
+  "share_le_5m": "88%",
+  "share_le_10m": "95%",
+  "over_1h": 2
+ },
+ "threshold_checkpoints": {
+  "evaluated": 267,
+  "breached": 58,
+  "breached:actual_files_touched": 17,
+  "breached:actual_minutes": 23,
+  "breached:side_effects_actual.sends_oacp_reply": 9,
+  "breached:side_effects_actual.files_issues": 2,
+  "breached:side_effects_actual.comments_on_github": 3,
+  "breached:task_profile.expected_files_touched": 1,
+  "breached:side_effects_actual.commits_changes": 4,
+  "breached:side_effects_actual.creates_or_updates_pr": 1,
+  "breached:task_profile.external_side_effects": 1,
+  "breached:task_profile.touches_dependencies": 1,
+  "breached:task_profile.destructive_ops": 1,
+  "breached:side_effects_actual.merges_pr": 2,
+  "breached:task_profile.comments_on_github": 1,
+  "breached:expected_files_touched": 1,
+  "breached:task_profile.commits_changes": 1
+ },
+ "final_state": {
+  "done": 773,
+  "superseded": 10,
+  "paused": 24,
+  "completed": 3,
+  "pending": 1,
+  "error": 1,
+  "superseded_by_redispatch_done": 1,
+  "done_human_approved": 1,
+  "merged_and_cleaned_up": 1,
+  "?": 1,
+  "cancelled": 1
+ },
+ "actual_over_declared_minutes": {
+  "n": 340,
+  "median": 0.5,
+  "p20": 0.3,
+  "p80": 0.94,
+  "share_within_declared": "81%"
+ },
+ "actual_over_declared_files": {
+  "n": 337,
+  "median": 0.67,
+  "p20": 0.33,
+  "p80": 1.0,
+  "share_within_declared": "84%"
+ }
+}
