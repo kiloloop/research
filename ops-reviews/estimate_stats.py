@@ -171,6 +171,18 @@ ACTUAL_PATTERNS = [   # first match wins — the actual work / exec minutes as t
     re.compile(r"~(\d+(?:\.\d+)?)\s*m\s*(?:wall|exec|work|actual)"),                          # ~17m wall
 ]
 RATIO_STATED = re.compile(r"(?:=|≈)\s*(\d+\.\d+)\s*×\s*(?:of|vs)?\s*(?:the\s*)?(?:expected|wall|exec|est)", re.I)
+# Fallback only (2026-09-30): audit-clock cell formats the patterns above do not read. Tried ONLY when nothing above matched,
+# so a row that already carried a work figure keeps it; these can only move a row out of the clock-only set.
+FALLBACK_PATTERNS = [
+    re.compile(r"(\d+(?:\.\d+)?)m\s+audit\b"),                                 # 24m audit vs 55 = 0.44×
+    re.compile(r"\baudit\s+~?(\d+(?:\.\d+)?)m\b"),                             # audit 32m of 60 · audit 135m vs 45 declared
+    re.compile(r"(\d+(?:\.\d+)?)m/\d+f\s+vs\b"),                               # 66m/11f vs 80/42 · Actuals 51m/18f vs 45/12 declared
+    re.compile(r"(\d+(?:\.\d+)?)m/\d+(?:\.\d+)?m\s+\d+\.\d+\s*[x×]"),          # 25m/60m 0.42× · 155m/150m 1.03×
+    re.compile(r"(\d+(?:\.\d+)?)m\s*=\s*\**\d+\.\d+\s*[x×]"),                  # 39m = **0.43x** of 90 decl
+    re.compile(r"(\d+(?:\.\d+)?)m\s+vs\s+\d+(?:\.\d+)?\s*(?:mid|≈|\()"),       # 71m vs 100 mid · 12m vs 40 ≈0.30×
+    re.compile(r"\bdone,?\s+(\d+(?:\.\d+)?)m\s+(?:actual|/)"),                 # done, 14m actual · finalized done 4m / 121 files
+    re.compile(r"~?(\d+(?:\.\d+)?)m\s+(?:net|clock)\b"),                       # ~24m net · ~13m clock of ~95m est
+]
 
 def parse_actual(status: str):
     """Stated work/exec minutes: the earliest match of the specific patterns or the general one; None if the board wrote no figure."""
@@ -224,6 +236,10 @@ def read_dayfiles(dirs):
             if actual is None:
                 m2 = RATIO_STATED.search(status)
                 if m2 and expected: actual, pat, basis = float(m2.group(1)) * expected, "stated-ratio", "stated ratio"
+            if actual is None:
+                pooled = re.search(r"shared-PR actuals|pair est", status, re.I)   # one figure for two legs is not either leg's clock
+                hits = [] if pooled else [(m3.start(), float(m3.group(1)), i) for i, rx in enumerate(FALLBACK_PATTERNS) for m3 in [rx.search(status)] if m3]
+                if hits: _, actual, i = min(hits); pat, basis = f"fallback-{i}", "stated work minutes"
             if actual is None:
                 wall = send_to_done(c[0], status)
                 if wall: actual, pat, basis = wall, "send→done", "send-to-done wall"
