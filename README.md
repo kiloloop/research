@@ -10,11 +10,13 @@ Research published from our internal pipeline. Each piece is reviewed and saniti
 |-----------|----------|
 | `runtime-comparison/` | Runtime capability comparisons and benchmarks |
 | `ops-reviews/` | Operational reviews of our own agent fleet, with the scripts behind the numbers |
+| `practical-guides/` | How-to guides for agent coordination workflows, written from our own runs |
 
 ## Pieces
 
 | Date | Piece | Where |
 |------|-------|-------|
+| 2026-11-01 | [Claude Code in the cloud — a 101 from our own runs](practical-guides/2026-11-01-claude-code-cloud-101.md) — which job shapes cloud sessions and routines fit and which broke, the three pieces (environment, session, routine), a setup order that worked, nine things that surprised us, and what the runs cost, from a week of test runs on the research preview | `practical-guides/` |
 | 2026-10-01 | [Validated dispatches, defined (second edition)](ops-reviews/2026-10-01-validated-dispatches-defined.md) — the same four-test definition applied to the record through 2026-09-30: both scripts re-run, the board reader corrected and the first edition's dates re-read beside it, with the first edition kept as published; new aggregates and a redacted sample ship alongside | `ops-reviews/` |
 | 2026-09-10 | [Validated dispatches, defined: what the number on our homepage counts, and what it leaves out](ops-reviews/2026-09-10-validated-dispatches-defined.md) — the definition behind the dispatch count: four tests, the exclusions, the count over time with its correction to 557 dispatched legs, what the count is made of, and failure and human-intervention criteria from both records; aggregates, a redacted sample and [`CITATION.cff`](CITATION.cff) ship alongside, and the numbers come from [`estimate_stats.py`](ops-reviews/estimate_stats.py) and [`hil_stats.py`](ops-reviews/hil_stats.py) | `ops-reviews/` |
 | 2026-09-07 | [Estimate accuracy, measured: seven months of dispatch estimates against their actuals](ops-reviews/2026-09-07-estimate-accuracy-measured.md) — actual-to-estimate ratios from 606 dispatch rows by period, month, estimate size and task class, the declared-envelope headroom on review-loop legs, verdicts and review status; the computation behind the numbers is [`estimate_stats.py`](ops-reviews/estimate_stats.py) | `ops-reviews/` |
