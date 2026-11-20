@@ -1,0 +1,506 @@
+{
+  "generated": "2026-11-02",
+  "edition": "October 2026 (first monthly edition)",
+  "definition": "Validated dispatches, defined (second edition, 2026-10-01), unchanged",
+  "labels": "no runtime or model labels in this file; counts only",
+  "dispatch_record": {
+    "rows_through_2026-10-31": 911,
+    "dispatched_through_2026-10-31": 746,
+    "coordinator_self_rows_through_2026-10-31": 165,
+    "dispatched_count_series": {
+      "2026-08-31": 513,
+      "2026-09-10": 568,
+      "2026-09-30": 625,
+      "2026-10-31": 746
+    },
+    "second_edition_2026-09-30_as_published": 618,
+    "second_edition_2026-09-30_rerun_on_its_run_state": 618,
+    "by_month_dispatched": {
+      "2026-02": {
+        "n": 65,
+        "median": 0.82,
+        "mean": 0.97,
+        "p20": 0.28,
+        "p80": 1.31,
+        "under_0.5": "28%",
+        "within_0.5_2.0": "66%",
+        "over_2.0": "6%"
+      },
+      "2026-03": {
+        "n": 159,
+        "median": 0.76,
+        "mean": 0.94,
+        "p20": 0.33,
+        "p80": 1.31,
+        "under_0.5": "30%",
+        "within_0.5_2.0": "63%",
+        "over_2.0": "7%"
+      },
+      "2026-04": {
+        "n": 21,
+        "median": 0.7,
+        "mean": 0.81,
+        "p20": 0.54,
+        "p80": 1.0,
+        "under_0.5": "5%",
+        "within_0.5_2.0": "95%",
+        "over_2.0": "0%"
+      },
+      "2026-05": {
+        "n": 41,
+        "median": 0.43,
+        "mean": 0.56,
+        "p20": 0.25,
+        "p80": 0.76,
+        "under_0.5": "56%",
+        "within_0.5_2.0": "44%",
+        "over_2.0": "0%"
+      },
+      "2026-06": {
+        "n": 29,
+        "median": 0.55,
+        "mean": 0.6,
+        "p20": 0.35,
+        "p80": 0.82,
+        "under_0.5": "34%",
+        "within_0.5_2.0": "66%",
+        "over_2.0": "0%"
+      },
+      "2026-07": {
+        "n": 61,
+        "median": 0.5,
+        "mean": 0.65,
+        "p20": 0.3,
+        "p80": 1.0,
+        "under_0.5": "46%",
+        "within_0.5_2.0": "52%",
+        "over_2.0": "2%"
+      },
+      "2026-08": {
+        "n": 137,
+        "median": 0.77,
+        "mean": 1.06,
+        "p20": 0.4,
+        "p80": 1.31,
+        "under_0.5": "29%",
+        "within_0.5_2.0": "61%",
+        "over_2.0": "10%"
+      },
+      "2026-09": {
+        "n": 112,
+        "median": 0.8,
+        "mean": 0.81,
+        "p20": 0.47,
+        "p80": 1.1,
+        "under_0.5": "21%",
+        "within_0.5_2.0": "78%",
+        "over_2.0": "1%"
+      },
+      "2026-10": {
+        "n": 121,
+        "median": 0.83,
+        "mean": 1.01,
+        "p20": 0.45,
+        "p80": 1.27,
+        "under_0.5": "24%",
+        "within_0.5_2.0": "69%",
+        "over_2.0": "7%"
+      }
+    },
+    "october": {
+      "dispatched": {
+        "n": 121,
+        "median": 0.83,
+        "mean": 1.01,
+        "p20": 0.45,
+        "p80": 1.27,
+        "under_0.5": "24%",
+        "within_0.5_2.0": "69%",
+        "over_2.0": "7%"
+      },
+      "coordinator_self_rows": 54,
+      "estimated_hours": 61.9,
+      "actual_hours": 59.0,
+      "median_estimate_m": 25.0,
+      "median_actual_m": 20.0,
+      "by_class": {
+        "brainstorm / research / design": {
+          "n": 26,
+          "median": 0.68,
+          "mean": 0.84,
+          "p20": 0.45,
+          "p80": 1.0,
+          "under_0.5": "27%",
+          "within_0.5_2.0": "65%",
+          "over_2.0": "8%"
+        },
+        "docs / site content": {
+          "n": 4,
+          "median": 0.59,
+          "mean": 0.81,
+          "p20": 0.18,
+          "p80": 1.35,
+          "under_0.5": "50%",
+          "within_0.5_2.0": "50%",
+          "over_2.0": "0%"
+        },
+        "implementation": {
+          "n": 12,
+          "median": 0.74,
+          "mean": 1.13,
+          "p20": 0.29,
+          "p80": 1.42,
+          "under_0.5": "42%",
+          "within_0.5_2.0": "50%",
+          "over_2.0": "8%"
+        },
+        "other": {
+          "n": 12,
+          "median": 0.56,
+          "mean": 0.6,
+          "p20": 0.37,
+          "p80": 0.94,
+          "under_0.5": "42%",
+          "within_0.5_2.0": "58%",
+          "over_2.0": "0%"
+        },
+        "release / promote": {
+          "n": 19,
+          "median": 0.83,
+          "mean": 0.98,
+          "p20": 0.57,
+          "p80": 1.32,
+          "under_0.5": "16%",
+          "within_0.5_2.0": "79%",
+          "over_2.0": "5%"
+        },
+        "review / audit / verification": {
+          "n": 48,
+          "median": 0.92,
+          "mean": 1.19,
+          "p20": 0.63,
+          "p80": 1.48,
+          "under_0.5": "15%",
+          "within_0.5_2.0": "75%",
+          "over_2.0": "10%"
+        }
+      },
+      "by_size": {
+        "<= 15 m": 29,
+        "31-60 m": 22,
+        "16-30 m": 65,
+        "> 120 m": 2,
+        "61-120 m": 3
+      },
+      "over_2x_legs": 9
+    },
+    "declared_envelope_board_by_month": {
+      "2026-08": {
+        "n": 31,
+        "actual_over_expected_median": 1.16,
+        "actual_over_declared_median": 0.65,
+        "over_declared": "26%"
+      },
+      "2026-09": {
+        "n": 112,
+        "actual_over_expected_median": 0.8,
+        "actual_over_declared_median": 0.42,
+        "over_declared": "1%"
+      },
+      "2026-10": {
+        "n": 114,
+        "actual_over_expected_median": 0.83,
+        "actual_over_declared_median": 0.43,
+        "over_declared": "5%"
+      }
+    }
+  },
+  "audit_record": {
+    "records_through_2026-10-31": 1106,
+    "unparsable_records": 1,
+    "through_2026-10-31": {
+      "records": 1106,
+      "paused": 875,
+      "auto_accepted": 228,
+      "pause_rate": "79%",
+      "outcomes_recorded": 688,
+      "approved": 649,
+      "modified": 33,
+      "declined": 6,
+      "approved_share": "94%",
+      "median_decision_s": 121.0,
+      "checkpoints_evaluated": 426,
+      "checkpoints_breached": 84,
+      "breach_share": "20%",
+      "minutes_inside_declared": "85%",
+      "minutes_envelope_n": 499,
+      "dated_records": 1092
+    },
+    "by_month": {
+      "2026-05": {
+        "records": 51,
+        "paused": 42,
+        "auto_accepted": 9,
+        "pause_rate": "82%",
+        "outcomes_recorded": 0,
+        "approved": 0,
+        "modified": 0,
+        "declined": 0,
+        "approved_share": null,
+        "median_decision_s": null,
+        "checkpoints_evaluated": 0,
+        "checkpoints_breached": 0,
+        "breach_share": null,
+        "minutes_inside_declared": null,
+        "minutes_envelope_n": null
+      },
+      "2026-06": {
+        "records": 45,
+        "paused": 41,
+        "auto_accepted": 4,
+        "pause_rate": "91%",
+        "outcomes_recorded": 0,
+        "approved": 0,
+        "modified": 0,
+        "declined": 0,
+        "approved_share": null,
+        "median_decision_s": null,
+        "checkpoints_evaluated": 9,
+        "checkpoints_breached": 1,
+        "breach_share": "11%",
+        "minutes_inside_declared": "100%",
+        "minutes_envelope_n": 1
+      },
+      "2026-07": {
+        "records": 84,
+        "paused": 61,
+        "auto_accepted": 23,
+        "pause_rate": "73%",
+        "outcomes_recorded": 35,
+        "approved": 34,
+        "modified": 1,
+        "declined": 0,
+        "approved_share": "97%",
+        "median_decision_s": 120,
+        "checkpoints_evaluated": 16,
+        "checkpoints_breached": 3,
+        "breach_share": "19%",
+        "minutes_inside_declared": "63%",
+        "minutes_envelope_n": 43
+      },
+      "2026-08": {
+        "records": 340,
+        "paused": 281,
+        "auto_accepted": 59,
+        "pause_rate": "83%",
+        "outcomes_recorded": 265,
+        "approved": 239,
+        "modified": 22,
+        "declined": 4,
+        "approved_share": "90%",
+        "median_decision_s": 147,
+        "checkpoints_evaluated": 124,
+        "checkpoints_breached": 31,
+        "breach_share": "25%",
+        "minutes_inside_declared": "73%",
+        "minutes_envelope_n": 178
+      },
+      "2026-09": {
+        "records": 282,
+        "paused": 246,
+        "auto_accepted": 36,
+        "pause_rate": "87%",
+        "outcomes_recorded": 231,
+        "approved": 223,
+        "modified": 7,
+        "declined": 1,
+        "approved_share": "97%",
+        "median_decision_s": 102,
+        "checkpoints_evaluated": 118,
+        "checkpoints_breached": 23,
+        "breach_share": "19%",
+        "minutes_inside_declared": "98%",
+        "minutes_envelope_n": 118
+      },
+      "2026-10": {
+        "records": 290,
+        "paused": 197,
+        "auto_accepted": 93,
+        "pause_rate": "68%",
+        "outcomes_recorded": 157,
+        "approved": 153,
+        "modified": 3,
+        "declined": 1,
+        "approved_share": "97%",
+        "median_decision_s": 116,
+        "checkpoints_evaluated": 159,
+        "checkpoints_breached": 26,
+        "breach_share": "16%",
+        "minutes_inside_declared": "94%",
+        "minutes_envelope_n": 159
+      }
+    },
+    "machines": {
+      "first_machine_through_2026-10-31": 1070,
+      "second_machine_through_2026-10-31": 36,
+      "second_machine_in_october": 9,
+      "set_aside_created_after_2026-10-31_utc": 7,
+      "unparsable": 1,
+      "undated": 13
+    },
+    "october_detail": {
+      "admission_by_message_kind": {
+        "task_request": {
+          "accepted_without_pause": 27,
+          "of": 94
+        },
+        "review_request": {
+          "accepted_without_pause": 27,
+          "of": 113
+        },
+        "brainstorm_request": {
+          "accepted_without_pause": 38,
+          "of": 42
+        },
+        "review_feedback": {
+          "accepted_without_pause": 0,
+          "of": 12
+        },
+        "review_addressed": {
+          "accepted_without_pause": 1,
+          "of": 13
+        },
+        "review_lgtm": {
+          "accepted_without_pause": 0,
+          "of": 16
+        }
+      },
+      "september_admission_by_message_kind": {
+        "task_request": {
+          "accepted_without_pause": 12,
+          "of": 106
+        },
+        "brainstorm_request": {
+          "accepted_without_pause": 18,
+          "of": 22
+        },
+        "review_request": {
+          "accepted_without_pause": 6,
+          "of": 142
+        },
+        "follow_up": {
+          "accepted_without_pause": 0,
+          "of": 1
+        },
+        "question": {
+          "accepted_without_pause": 0,
+          "of": 1
+        },
+        "review_feedback": {
+          "accepted_without_pause": 0,
+          "of": 1
+        },
+        "review_lgtm": {
+          "accepted_without_pause": 0,
+          "of": 8
+        },
+        "review_addressed": {
+          "accepted_without_pause": 0,
+          "of": 1
+        }
+      },
+      "admitted_under_a_continuation_grant": 28,
+      "first_admission_under_the_general_grant_form_utc_date": "2026-10-16",
+      "first_admission_under_a_review_thread_grant_utc_date": "2026-08-25",
+      "accepted_without_pause_and_without_a_grant": 65,
+      "september_accepted_without_pause": 36,
+      "september_admitted_under_a_review_thread_grant": 6,
+      "september_accepted_without_pause_and_without_a_grant": 30,
+      "grant_fields_note": "re-read on 2026-11-20 to count both grant forms; the August and September figures are from the first machine, which holds every review request accepted without a pause in those months",
+      "legs_declaring_a_merge": 49,
+      "legs_declaring_a_merge_accepted_without_pause": 0,
+      "pauses_without_recorded_outcome": {
+        "review_feedback": 12,
+        "review_addressed": 12,
+        "review_lgtm": 16
+      },
+      "pause_rate_without_those": "63%",
+      "decision_latency_seconds": {
+        "n": 157,
+        "median": 116,
+        "p80": 217,
+        "p90": 388,
+        "p95": 452,
+        "max": 93156,
+        "share_le_2m": "54%",
+        "share_le_5m": "86%",
+        "share_le_10m": "96%",
+        "over_1h": 1
+      },
+      "threshold_checkpoints_note": "read at each run's last checkpoint; a breach there can be recorded at the end of the run",
+      "threshold_checkpoints": {
+        "evaluated": 159,
+        "breached": 26,
+        "breached:side_effects_actual.files_issues": 1,
+        "breached:actual_files_touched": 13,
+        "breached:actual_minutes": 8,
+        "breached:side_effects_actual.sends_oacp_reply": 4
+      },
+      "actual_over_declared_minutes": {
+        "n": 159,
+        "median": 0.42,
+        "p20": 0.22,
+        "p80": 0.67,
+        "share_within_declared": "94%"
+      },
+      "actual_over_declared_files": {
+        "n": 155,
+        "median": 0.64,
+        "p20": 0.5,
+        "p80": 1.0,
+        "share_within_declared": "92%"
+      },
+      "pause_reason_families": {
+        "review_continuation": 76,
+        "side_effect": 70,
+        "threshold": 54,
+        "mode_always_pause": 5,
+        "content_hard_stop": 1,
+        "profile_missing_or_invalid": 1
+      },
+      "final_state": {
+        "done": 248,
+        "cancelled": 2,
+        "paused": 40
+      }
+    }
+  },
+  "shipped_october_pacific": {
+    "merged_pull_requests": 116,
+    "repositories": 16,
+    "public_repositories": 6,
+    "private_repositories": 10,
+    "merged_in_public_repositories": 11,
+    "merged_in_private_repositories": 105,
+    "opened_by_an_agent_identity": 116,
+    "merged_by_the_human": 33,
+    "merged_by_an_agent_identity": 83,
+    "public_releases": [
+      "oacp 0.5.3",
+      "oacp 0.5.4",
+      "agent-estimate 0.9.0",
+      "agent-estimate 0.10.0",
+      "agent-memory 0.1.4",
+      "kiloloop-skills 0.4.4",
+      "kiloloop-skills 0.4.5",
+      "kiloloop-skills 0.4.6",
+      "oacp-skills 0.8.0"
+    ],
+    "september_for_comparison": {
+      "merged_pull_requests": 166,
+      "merged_in_public_repositories": 26,
+      "public_releases": 13,
+      "public_release_projects": 4
+    }
+  }
+}

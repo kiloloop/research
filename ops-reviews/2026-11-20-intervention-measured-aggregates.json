@@ -1,0 +1,812 @@
+{
+  "window_until_utc": "2026-10-31",
+  "records_read": 1127,
+  "unparsable": 1,
+  "undated": 13,
+  "set_aside_after_window": 57,
+  "dated_in_window": 1056,
+  "counting_unit": {
+    "evaluation_records": 1056,
+    "distinct_message_ids": 1046,
+    "message_ids_with_more_than_one_record": 9,
+    "sent_to_two_receivers": 4,
+    "evaluated_more_than_once_by_one_receiver": 5
+  },
+  "all": {
+    "records": 1056,
+    "asked": 834,
+    "asked_pct": 79.0,
+    "passed_under_a_continuation_grant": 37,
+    "passed_under_a_grant_by_form": {
+      "review_thread": 9,
+      "general": 28
+    },
+    "answers_recorded": 661,
+    "approved": 623,
+    "modified": 32,
+    "declined": 6,
+    "changed": 38,
+    "changed_pct_of_answers": 5.7,
+    "answers_dated_after_a_stop": {
+      "approved": 6,
+      "modified": 8
+    },
+    "changed_without_those": 30,
+    "answers_without_those": 647,
+    "named_clearances_decided_before_the_stop": 10,
+    "checkpoints_evaluated": 415,
+    "breached_at_last_checkpoint": 81,
+    "continued_under_grant": 0,
+    "stopped": 83,
+    "stopped_pct_of_evaluated": 20.0,
+    "stopped_at_last_checkpoint": 81,
+    "stopped_earlier_only": 2,
+    "stopped_at_final_checkpoint_after_work": 16,
+    "stop_basis_at_last_checkpoint": {
+      "None": 4,
+      "realized": 72,
+      "declared_intent": 5
+    },
+    "stop_cleared_by_human": 75,
+    "stop_cleared_by_sender": 3,
+    "stop_clear_unrecorded": 5,
+    "stop_clear_evidence": {
+      "legacy_action": 1,
+      "none": 5,
+      "sender_reply": 3,
+      "later_answer": 16,
+      "named": 58
+    },
+    "stop_answers": {
+      "approved": 56,
+      "modified": 18
+    },
+    "stop_answers_stored_on_the_record": 73,
+    "stop_answers_read_from_the_record_label": 1,
+    "stop_answers_not_recorded": 1,
+    "no_human_step": 203,
+    "no_human_step_pct": 19.2,
+    "no_human_step_with_completion_stamp": 182,
+    "unasked_with_recorded_human_answer": 16,
+    "cancelled": 3,
+    "work_minutes_total": 18821,
+    "work_clock_n": 874,
+    "human_steps": 935,
+    "human_steps_on_clocked_runs": 772,
+    "unasked_answers_counted_once_as_the_stop_they_cleared": 11,
+    "work_minutes_per_human_step": 24.4,
+    "run_minutes_no_recorded_stop": {
+      "n": 792,
+      "median": 9.0,
+      "p90": 44,
+      "max": 309,
+      "without_an_evaluated_checkpoint": 464
+    },
+    "run_minutes_no_human_step": {
+      "n": 185,
+      "median": 11,
+      "p90": 22,
+      "max": 32
+    }
+  },
+  "by_month": {
+    "2026-05": {
+      "records": 48,
+      "asked": 39,
+      "asked_pct": 81.2,
+      "passed_under_a_continuation_grant": 0,
+      "passed_under_a_grant_by_form": {},
+      "answers_recorded": 0,
+      "approved": 0,
+      "modified": 0,
+      "declined": 0,
+      "changed": 0,
+      "changed_pct_of_answers": null,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 0,
+      "answers_without_those": 0,
+      "named_clearances_decided_before_the_stop": 0,
+      "checkpoints_evaluated": 0,
+      "breached_at_last_checkpoint": 0,
+      "continued_under_grant": 0,
+      "stopped": 0,
+      "stopped_pct_of_evaluated": null,
+      "stopped_at_last_checkpoint": 0,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 0,
+      "stop_basis_at_last_checkpoint": {},
+      "stop_cleared_by_human": 0,
+      "stop_cleared_by_sender": 0,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {},
+      "stop_answers": {},
+      "stop_answers_stored_on_the_record": 0,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 9,
+      "no_human_step_pct": 18.8,
+      "no_human_step_with_completion_stamp": 0,
+      "unasked_with_recorded_human_answer": 0,
+      "cancelled": 0,
+      "work_minutes_total": 0,
+      "work_clock_n": 0,
+      "human_steps": 39,
+      "human_steps_on_clocked_runs": 0,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 0,
+      "work_minutes_per_human_step": null,
+      "run_minutes_no_recorded_stop": {
+        "n": 0,
+        "median": null,
+        "p90": null,
+        "max": null,
+        "without_an_evaluated_checkpoint": 0
+      },
+      "run_minutes_no_human_step": {
+        "n": 0,
+        "median": null,
+        "p90": null,
+        "max": null
+      }
+    },
+    "2026-06": {
+      "records": 45,
+      "asked": 41,
+      "asked_pct": 91.1,
+      "passed_under_a_continuation_grant": 0,
+      "passed_under_a_grant_by_form": {},
+      "answers_recorded": 0,
+      "approved": 0,
+      "modified": 0,
+      "declined": 0,
+      "changed": 0,
+      "changed_pct_of_answers": null,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 0,
+      "answers_without_those": 0,
+      "named_clearances_decided_before_the_stop": 0,
+      "checkpoints_evaluated": 9,
+      "breached_at_last_checkpoint": 1,
+      "continued_under_grant": 0,
+      "stopped": 1,
+      "stopped_pct_of_evaluated": 11.1,
+      "stopped_at_last_checkpoint": 1,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 0,
+      "stop_basis_at_last_checkpoint": {
+        "None": 1
+      },
+      "stop_cleared_by_human": 1,
+      "stop_cleared_by_sender": 0,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {
+        "legacy_action": 1
+      },
+      "stop_answers": {
+        "approved": 1
+      },
+      "stop_answers_stored_on_the_record": 0,
+      "stop_answers_read_from_the_record_label": 1,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 4,
+      "no_human_step_pct": 8.9,
+      "no_human_step_with_completion_stamp": 0,
+      "unasked_with_recorded_human_answer": 0,
+      "cancelled": 0,
+      "work_minutes_total": 101,
+      "work_clock_n": 8,
+      "human_steps": 42,
+      "human_steps_on_clocked_runs": 8,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 0,
+      "work_minutes_per_human_step": 12.6,
+      "run_minutes_no_recorded_stop": {
+        "n": 7,
+        "median": 9,
+        "p90": 18,
+        "max": 18,
+        "without_an_evaluated_checkpoint": 1
+      },
+      "run_minutes_no_human_step": {
+        "n": 1,
+        "median": 5,
+        "p90": 5,
+        "max": 5
+      }
+    },
+    "2026-07": {
+      "records": 80,
+      "asked": 58,
+      "asked_pct": 72.5,
+      "passed_under_a_continuation_grant": 0,
+      "passed_under_a_grant_by_form": {},
+      "answers_recorded": 35,
+      "approved": 34,
+      "modified": 1,
+      "declined": 0,
+      "changed": 1,
+      "changed_pct_of_answers": 2.9,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 1,
+      "answers_without_those": 35,
+      "named_clearances_decided_before_the_stop": 0,
+      "checkpoints_evaluated": 16,
+      "breached_at_last_checkpoint": 3,
+      "continued_under_grant": 0,
+      "stopped": 3,
+      "stopped_pct_of_evaluated": 18.8,
+      "stopped_at_last_checkpoint": 3,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 0,
+      "stop_basis_at_last_checkpoint": {
+        "None": 3
+      },
+      "stop_cleared_by_human": 0,
+      "stop_cleared_by_sender": 0,
+      "stop_clear_unrecorded": 3,
+      "stop_clear_evidence": {
+        "none": 3
+      },
+      "stop_answers": {},
+      "stop_answers_stored_on_the_record": 0,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 17,
+      "no_human_step_pct": 21.2,
+      "no_human_step_with_completion_stamp": 10,
+      "unasked_with_recorded_human_answer": 4,
+      "cancelled": 0,
+      "work_minutes_total": 1824,
+      "work_clock_n": 55,
+      "human_steps": 65,
+      "human_steps_on_clocked_runs": 45,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 0,
+      "work_minutes_per_human_step": 40.5,
+      "run_minutes_no_recorded_stop": {
+        "n": 53,
+        "median": 18,
+        "p90": 67,
+        "max": 141,
+        "without_an_evaluated_checkpoint": 40
+      },
+      "run_minutes_no_human_step": {
+        "n": 12,
+        "median": 9.0,
+        "p90": 15,
+        "max": 15
+      }
+    },
+    "2026-08": {
+      "records": 340,
+      "asked": 281,
+      "asked_pct": 82.6,
+      "passed_under_a_continuation_grant": 3,
+      "passed_under_a_grant_by_form": {
+        "review_thread": 3
+      },
+      "answers_recorded": 265,
+      "approved": 239,
+      "modified": 22,
+      "declined": 4,
+      "changed": 26,
+      "changed_pct_of_answers": 9.8,
+      "answers_dated_after_a_stop": {
+        "approved": 5,
+        "modified": 8
+      },
+      "changed_without_those": 18,
+      "answers_without_those": 252,
+      "named_clearances_decided_before_the_stop": 1,
+      "checkpoints_evaluated": 124,
+      "breached_at_last_checkpoint": 31,
+      "continued_under_grant": 0,
+      "stopped": 31,
+      "stopped_pct_of_evaluated": 25.0,
+      "stopped_at_last_checkpoint": 31,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 0,
+      "stop_basis_at_last_checkpoint": {
+        "realized": 28,
+        "declared_intent": 3
+      },
+      "stop_cleared_by_human": 27,
+      "stop_cleared_by_sender": 2,
+      "stop_clear_unrecorded": 2,
+      "stop_clear_evidence": {
+        "sender_reply": 2,
+        "later_answer": 13,
+        "named": 14,
+        "none": 2
+      },
+      "stop_answers": {
+        "approved": 16,
+        "modified": 11
+      },
+      "stop_answers_stored_on_the_record": 27,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 54,
+      "no_human_step_pct": 15.9,
+      "no_human_step_with_completion_stamp": 53,
+      "unasked_with_recorded_human_answer": 5,
+      "cancelled": 0,
+      "work_minutes_total": 7605,
+      "work_clock_n": 326,
+      "human_steps": 311,
+      "human_steps_on_clocked_runs": 298,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 4,
+      "work_minutes_per_human_step": 25.5,
+      "run_minutes_no_recorded_stop": {
+        "n": 295,
+        "median": 9,
+        "p90": 47,
+        "max": 309,
+        "without_an_evaluated_checkpoint": 204
+      },
+      "run_minutes_no_human_step": {
+        "n": 53,
+        "median": 11,
+        "p90": 19,
+        "max": 28
+      }
+    },
+    "2026-09": {
+      "records": 262,
+      "asked": 226,
+      "asked_pct": 86.3,
+      "passed_under_a_continuation_grant": 6,
+      "passed_under_a_grant_by_form": {
+        "review_thread": 6
+      },
+      "answers_recorded": 212,
+      "approved": 205,
+      "modified": 6,
+      "declined": 1,
+      "changed": 7,
+      "changed_pct_of_answers": 3.3,
+      "answers_dated_after_a_stop": {
+        "approved": 1
+      },
+      "changed_without_those": 7,
+      "answers_without_those": 211,
+      "named_clearances_decided_before_the_stop": 1,
+      "checkpoints_evaluated": 111,
+      "breached_at_last_checkpoint": 20,
+      "continued_under_grant": 0,
+      "stopped": 20,
+      "stopped_pct_of_evaluated": 18.0,
+      "stopped_at_last_checkpoint": 20,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 3,
+      "stop_basis_at_last_checkpoint": {
+        "realized": 18,
+        "declared_intent": 2
+      },
+      "stop_cleared_by_human": 20,
+      "stop_cleared_by_sender": 0,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {
+        "named": 18,
+        "later_answer": 2
+      },
+      "stop_answers": {
+        "modified": 6,
+        "approved": 14
+      },
+      "stop_answers_stored_on_the_record": 20,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 30,
+      "no_human_step_pct": 11.5,
+      "no_human_step_with_completion_stamp": 30,
+      "unasked_with_recorded_human_answer": 6,
+      "cancelled": 1,
+      "work_minutes_total": 5053,
+      "work_clock_n": 246,
+      "human_steps": 248,
+      "human_steps_on_clocked_runs": 232,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 6,
+      "work_minutes_per_human_step": 21.8,
+      "run_minutes_no_recorded_stop": {
+        "n": 226,
+        "median": 8.0,
+        "p90": 46,
+        "max": 113,
+        "without_an_evaluated_checkpoint": 135
+      },
+      "run_minutes_no_human_step": {
+        "n": 30,
+        "median": 11.0,
+        "p90": 22,
+        "max": 27
+      }
+    },
+    "2026-10": {
+      "records": 281,
+      "asked": 189,
+      "asked_pct": 67.3,
+      "passed_under_a_continuation_grant": 28,
+      "passed_under_a_grant_by_form": {
+        "general": 28
+      },
+      "answers_recorded": 149,
+      "approved": 145,
+      "modified": 3,
+      "declined": 1,
+      "changed": 4,
+      "changed_pct_of_answers": 2.7,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 4,
+      "answers_without_those": 149,
+      "named_clearances_decided_before_the_stop": 8,
+      "checkpoints_evaluated": 155,
+      "breached_at_last_checkpoint": 26,
+      "continued_under_grant": 0,
+      "stopped": 28,
+      "stopped_pct_of_evaluated": 18.1,
+      "stopped_at_last_checkpoint": 26,
+      "stopped_earlier_only": 2,
+      "stopped_at_final_checkpoint_after_work": 13,
+      "stop_basis_at_last_checkpoint": {
+        "realized": 26
+      },
+      "stop_cleared_by_human": 27,
+      "stop_cleared_by_sender": 1,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {
+        "named": 26,
+        "later_answer": 1,
+        "sender_reply": 1
+      },
+      "stop_answers": {
+        "approved": 25,
+        "modified": 1
+      },
+      "stop_answers_stored_on_the_record": 26,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 1,
+      "no_human_step": 89,
+      "no_human_step_pct": 31.7,
+      "no_human_step_with_completion_stamp": 89,
+      "unasked_with_recorded_human_answer": 1,
+      "cancelled": 2,
+      "work_minutes_total": 4238,
+      "work_clock_n": 239,
+      "human_steps": 230,
+      "human_steps_on_clocked_runs": 189,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 1,
+      "work_minutes_per_human_step": 22.4,
+      "run_minutes_no_recorded_stop": {
+        "n": 211,
+        "median": 8,
+        "p90": 27,
+        "max": 64,
+        "without_an_evaluated_checkpoint": 84
+      },
+      "run_minutes_no_human_step": {
+        "n": 89,
+        "median": 10,
+        "p90": 24,
+        "max": 32
+      }
+    }
+  },
+  "by_kind": {
+    "task_request": {
+      "records": 468,
+      "asked": 395,
+      "asked_pct": 84.4,
+      "passed_under_a_continuation_grant": 0,
+      "passed_under_a_grant_by_form": {},
+      "answers_recorded": 301,
+      "approved": 272,
+      "modified": 27,
+      "declined": 2,
+      "changed": 29,
+      "changed_pct_of_answers": 9.6,
+      "answers_dated_after_a_stop": {
+        "approved": 6,
+        "modified": 8
+      },
+      "changed_without_those": 21,
+      "answers_without_those": 287,
+      "named_clearances_decided_before_the_stop": 10,
+      "checkpoints_evaluated": 287,
+      "breached_at_last_checkpoint": 74,
+      "continued_under_grant": 0,
+      "stopped": 75,
+      "stopped_pct_of_evaluated": 26.1,
+      "stopped_at_last_checkpoint": 74,
+      "stopped_earlier_only": 1,
+      "stopped_at_final_checkpoint_after_work": 14,
+      "stop_basis_at_last_checkpoint": {
+        "None": 4,
+        "realized": 65,
+        "declared_intent": 5
+      },
+      "stop_cleared_by_human": 69,
+      "stop_cleared_by_sender": 1,
+      "stop_clear_unrecorded": 5,
+      "stop_clear_evidence": {
+        "legacy_action": 1,
+        "none": 5,
+        "later_answer": 13,
+        "named": 55,
+        "sender_reply": 1
+      },
+      "stop_answers": {
+        "approved": 52,
+        "modified": 16
+      },
+      "stop_answers_stored_on_the_record": 67,
+      "stop_answers_read_from_the_record_label": 1,
+      "stop_answers_not_recorded": 1,
+      "no_human_step": 60,
+      "no_human_step_pct": 12.8,
+      "no_human_step_with_completion_stamp": 51,
+      "unasked_with_recorded_human_answer": 11,
+      "cancelled": 0,
+      "work_minutes_total": 14529,
+      "work_clock_n": 369,
+      "human_steps": 489,
+      "human_steps_on_clocked_runs": 398,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 6,
+      "work_minutes_per_human_step": 36.5,
+      "run_minutes_no_recorded_stop": {
+        "n": 295,
+        "median": 24,
+        "p90": 71,
+        "max": 309,
+        "without_an_evaluated_checkpoint": 87
+      },
+      "run_minutes_no_human_step": {
+        "n": 52,
+        "median": 11.0,
+        "p90": 23,
+        "max": 32
+      }
+    },
+    "review_request": {
+      "records": 369,
+      "asked": 333,
+      "asked_pct": 90.2,
+      "passed_under_a_continuation_grant": 36,
+      "passed_under_a_grant_by_form": {
+        "review_thread": 9,
+        "general": 27
+      },
+      "answers_recorded": 322,
+      "approved": 316,
+      "modified": 2,
+      "declined": 4,
+      "changed": 6,
+      "changed_pct_of_answers": 1.9,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 6,
+      "answers_without_those": 322,
+      "named_clearances_decided_before_the_stop": 0,
+      "checkpoints_evaluated": 32,
+      "breached_at_last_checkpoint": 0,
+      "continued_under_grant": 0,
+      "stopped": 0,
+      "stopped_pct_of_evaluated": 0.0,
+      "stopped_at_last_checkpoint": 0,
+      "stopped_earlier_only": 0,
+      "stopped_at_final_checkpoint_after_work": 0,
+      "stop_basis_at_last_checkpoint": {},
+      "stop_cleared_by_human": 0,
+      "stop_cleared_by_sender": 0,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {},
+      "stop_answers": {},
+      "stop_answers_stored_on_the_record": 0,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 36,
+      "no_human_step_pct": 9.8,
+      "no_human_step_with_completion_stamp": 36,
+      "unasked_with_recorded_human_answer": 0,
+      "cancelled": 2,
+      "work_minutes_total": 2210,
+      "work_clock_n": 360,
+      "human_steps": 333,
+      "human_steps_on_clocked_runs": 324,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 0,
+      "work_minutes_per_human_step": 6.8,
+      "run_minutes_no_recorded_stop": {
+        "n": 360,
+        "median": 6.0,
+        "p90": 10,
+        "max": 22,
+        "without_an_evaluated_checkpoint": 328
+      },
+      "run_minutes_no_human_step": {
+        "n": 36,
+        "median": 5.0,
+        "p90": 11,
+        "max": 11
+      }
+    },
+    "brainstorm_request": {
+      "records": 150,
+      "asked": 40,
+      "asked_pct": 26.7,
+      "passed_under_a_continuation_grant": 0,
+      "passed_under_a_grant_by_form": {},
+      "answers_recorded": 27,
+      "approved": 25,
+      "modified": 2,
+      "declined": 0,
+      "changed": 2,
+      "changed_pct_of_answers": 7.4,
+      "answers_dated_after_a_stop": {},
+      "changed_without_those": 2,
+      "answers_without_those": 27,
+      "named_clearances_decided_before_the_stop": 0,
+      "checkpoints_evaluated": 89,
+      "breached_at_last_checkpoint": 6,
+      "continued_under_grant": 0,
+      "stopped": 7,
+      "stopped_pct_of_evaluated": 7.9,
+      "stopped_at_last_checkpoint": 6,
+      "stopped_earlier_only": 1,
+      "stopped_at_final_checkpoint_after_work": 2,
+      "stop_basis_at_last_checkpoint": {
+        "realized": 6
+      },
+      "stop_cleared_by_human": 5,
+      "stop_cleared_by_sender": 2,
+      "stop_clear_unrecorded": 0,
+      "stop_clear_evidence": {
+        "sender_reply": 2,
+        "later_answer": 3,
+        "named": 2
+      },
+      "stop_answers": {
+        "approved": 3,
+        "modified": 2
+      },
+      "stop_answers_stored_on_the_record": 5,
+      "stop_answers_read_from_the_record_label": 0,
+      "stop_answers_not_recorded": 0,
+      "no_human_step": 105,
+      "no_human_step_pct": 70.0,
+      "no_human_step_with_completion_stamp": 94,
+      "unasked_with_recorded_human_answer": 5,
+      "cancelled": 0,
+      "work_minutes_total": 1871,
+      "work_clock_n": 130,
+      "human_steps": 46,
+      "human_steps_on_clocked_runs": 35,
+      "unasked_answers_counted_once_as_the_stop_they_cleared": 5,
+      "work_minutes_per_human_step": 53.5,
+      "run_minutes_no_recorded_stop": {
+        "n": 123,
+        "median": 13,
+        "p90": 22,
+        "max": 32,
+        "without_an_evaluated_checkpoint": 41
+      },
+      "run_minutes_no_human_step": {
+        "n": 96,
+        "median": 14.0,
+        "p90": 22,
+        "max": 32
+      }
+    }
+  },
+  "by_month_by_kind": {
+    "2026-05": {
+      "task_request": {
+        "records": 36,
+        "asked": 35,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 0,
+        "asked": 0,
+        "passed_under_a_continuation_grant": 0
+      },
+      "brainstorm_request": {
+        "records": 11,
+        "asked": 4,
+        "passed_under_a_continuation_grant": 0
+      }
+    },
+    "2026-06": {
+      "task_request": {
+        "records": 38,
+        "asked": 36,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 0,
+        "asked": 0,
+        "passed_under_a_continuation_grant": 0
+      },
+      "brainstorm_request": {
+        "records": 6,
+        "asked": 4,
+        "passed_under_a_continuation_grant": 0
+      }
+    },
+    "2026-07": {
+      "task_request": {
+        "records": 65,
+        "asked": 51,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 0,
+        "asked": 0,
+        "passed_under_a_continuation_grant": 0
+      },
+      "brainstorm_request": {
+        "records": 14,
+        "asked": 6,
+        "passed_under_a_continuation_grant": 0
+      }
+    },
+    "2026-08": {
+      "task_request": {
+        "records": 145,
+        "asked": 127,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 119,
+        "asked": 116,
+        "passed_under_a_continuation_grant": 3
+      },
+      "brainstorm_request": {
+        "records": 63,
+        "asked": 26,
+        "passed_under_a_continuation_grant": 0
+      }
+    },
+    "2026-09": {
+      "task_request": {
+        "records": 94,
+        "asked": 82,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 138,
+        "asked": 132,
+        "passed_under_a_continuation_grant": 6
+      },
+      "brainstorm_request": {
+        "records": 18,
+        "asked": 0,
+        "passed_under_a_continuation_grant": 0
+      }
+    },
+    "2026-10": {
+      "task_request": {
+        "records": 90,
+        "asked": 64,
+        "passed_under_a_continuation_grant": 0
+      },
+      "review_request": {
+        "records": 112,
+        "asked": 85,
+        "passed_under_a_continuation_grant": 27
+      },
+      "brainstorm_request": {
+        "records": 38,
+        "asked": 0,
+        "passed_under_a_continuation_grant": 0
+      }
+    }
+  },
+  "first_pass_under_a_grant_utc_date": {
+    "review_thread": "2026-08-25",
+    "general": "2026-10-16"
+  },
+  "stop_actions": {
+    "completed_after_human_approval": 1,
+    "paused_for_reauthorization": 12,
+    "resumed_after_reauthorization": 68
+  },
+  "cancelled_by": {
+    "sender": 3
+  }
+}
